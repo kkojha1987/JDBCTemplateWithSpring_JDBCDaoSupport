@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>JDBCTemplateWithSpring_Annotation</name>
+	<name>JDBCTemplateWithSpring_JDBCDaoSupport</name>
 	<comment></comment>
 	<projects>
 	</projects>

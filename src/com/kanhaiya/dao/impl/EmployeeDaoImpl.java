@@ -5,16 +5,18 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.kanhaiya.dao.EmployeeDao;
 import com.kanhaiya.model.Employee;
 @Repository
-public class EmployeeDaoImpl implements EmployeeDao {
+public class EmployeeDaoImpl extends JdbcDaoSupport implements EmployeeDao {
 
 	//private DataSource dataSource;
 	@Autowired
@@ -24,9 +26,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		this.dataSource = dataSource;
 		jdbcTemplate=new JdbcTemplate(dataSource);
 	}*/
-	public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+	/*public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
-	}
+	}*/
 	/*
 	@Override
 	public void createEmployee(Employee employee)  {
@@ -107,4 +109,9 @@ if(update>0)
 				System.out.println("not inserted");
 	}
 
+	@PostConstruct
+	public void init()
+	{
+		setJdbcTemplate(jdbcTemplate);
+	}
 }
